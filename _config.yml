@@ -10,21 +10,30 @@
 ############################
 
 # Name of website
-title: My website
+title: Sargeant Photos
 
 # Your name to show in the footer
-author: Some Person
+author: Caleb Sargeant
 
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################
 
 navbar-links:
-  About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  Home: "/"
+  Years:
+    - 2024: "/2024"
+    - 2023: "/2023"
+    - 2022: "/2022"
+    - 2021: "/2021"
+    - 2020: "/2020"
+    - 2019: "/2019"
+    - 2018: "/2018"
+    - 2017: "/2017"
+    - 2016: "/2016"
+    - 2015: "/2015"
+    - 2014: "/2014"
+    - 2013: "/2013"
 
 ################
 # --- Logo --- #
@@ -50,14 +59,14 @@ round-avatar: true
 # You can change the order that they show up on the page by changing the order here.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "someone@example.com"
-  rss: true  # remove this line if you don't want to show an RSS link at the bottom
-  facebook: deanattali
-  github: daattali
-  twitter: daattali
-  patreon: DeanAttali
-  youtube: "@daattali"
-  whatsapp: 15551212
+  email: "caleb@sargeant.co"
+  #rss: true  # remove this line if you don't want to show an RSS link at the bottom
+  #facebook: deanattali
+  #github: CalebSargeant
+  #twitter: daattali
+  #patreon: DeanAttali
+  #youtube: "@daattali"
+  whatsapp: +31682016886
 #  medium: yourname
 #  reddit: yourname
 #  linkedin: daattali
@@ -93,14 +102,14 @@ rss-description: This website is a virtual proof that I'm awesome
 
 # Select which social network share links to show in posts
 share-links-active:
-  twitter: true
-  facebook: true
-  linkedin: true
+  twitter: false
+  facebook: false
+  linkedin: false
   vk: false
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"
+url-pretty: "photos.sargeant.co"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
@@ -115,10 +124,10 @@ feed_show_excerpt: true
 feed_show_tags: true
 
 # Add a search button to the navbar
-post_search: true
+post_search: false
 
 # Add a button in the footer to edit the current page. Only works if your website is hosted on GitHub
-edit_page_button: true
+edit_page_button: false
 
 # Allow sub-menu items (second-level navigation menu items) to be longer than the top-level menu
 # If this setting is off, then long sub-menu words might get cut off
@@ -258,7 +267,7 @@ date_format: "%B %-d, %Y"
 #################################################################################
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Toronto"
+timezone: "Europe/Amsterdam"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/

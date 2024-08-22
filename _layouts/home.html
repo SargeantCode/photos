@@ -26,14 +26,12 @@ layout: page
       {% endcapture %}
       {% assign thumbnail=thumbnail | strip %}
 
-      {% if site.feed_show_excerpt == false %}
       {% if thumbnail != "" %}
       <div class="post-image post-image-normal">
         <a href="{{ post.url | absolute_url }}" aria-label="Thumbnail">
           <img src="{{ thumbnail | absolute_url }}" alt="Post thumbnail">
         </a>
       </div>
-      {% endif %}
       {% endif %}
 
       <a href="{{ post.url | absolute_url }}">
@@ -46,42 +44,32 @@ layout: page
         {% endif %}
       </a>
 
-      {% if post.author %}
+      <!-- {% if post.author %}
         <span>By <strong>{{ post.author | strip_html }}</strong></span>
-      {% endif %}
-      <p class="post-meta">
+      {% endif %} -->
+      <!-- <p class="post-meta">
         {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
         Posted on {{ post.date | date: date_format }}
-      </p>
-
-      {% if thumbnail != "" %}
-      <div class="post-image post-image-small">
-        <a href="{{ post.url | absolute_url }}" aria-label="Thumbnail">
-          <img src="{{ thumbnail | absolute_url }}" alt="Post thumbnail">
-        </a>
-      </div>
-      {% endif %}
-
-      {% unless site.feed_show_excerpt == false %}
-      {% if thumbnail != "" %}
-      <div class="post-image post-image-short">
-        <a href="{{ post.url | absolute_url }}" aria-label="Thumbnail">
-          <img src="{{ thumbnail | absolute_url }}" alt="Post thumbnail">
-        </a>
-      </div>
-      {% endif %}
+      </p> -->
 
       <div class="post-entry">
-        {% assign excerpt_length = site.excerpt_length | default: 50 %}
-        {{ post.excerpt | strip_html | truncatewords: excerpt_length }}
-        {% assign excerpt_word_count = post.excerpt | number_of_words %}
-        {% if post.content != post.excerpt or excerpt_word_count > excerpt_length %}
-          <a href="{{ post.url | absolute_url }}" class="post-read-more">[Read&nbsp;More]</a>
-        {% endif %}
+        {{ post.content }}
       </div>
-      {% endunless %}
 
-      {% if site.feed_show_tags != false and post.tags.size > 0 %}
+      {% if post.images %}
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+          {% for image in post.images %}
+          <div style="position: relative; width: 100%; padding-bottom: 100%; overflow: hidden;">
+              <a href="{{ image.link }}" target="_blank" style="text-decoration: none; color: inherit;">
+                  <img src="{{ image.src }}" alt="{{ image.caption }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                  <p style="margin-top: 5px; position: absolute; bottom: 0; width: 100%; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px 0; text-align: center; transition: background-color 0.3s ease, transform 0.3s ease;">{{ image.caption }}</p>
+              </a>
+          </div>
+          {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if post.tags.size > 0 %}
       <div class="blog-tags">
         <span>Tags:</span>
         <!-- role="list" needed so that `list-style: none` in Safari doesn't remove the list semantics -->
@@ -105,16 +93,16 @@ layout: page
   {% if paginator.previous_page %}
   <li class="page-item previous">
     <a class="page-link" href="{{ paginator.previous_page_path | absolute_url }}">
-      <i class="fas fa-arrow-left" alt="Newer Posts"></i>
-      <span class="d-none d-sm-inline-block">Newer Posts</span>
+      <i class="fas fa-arrow-left" alt="Later Years"></i>
+      <span class="d-none d-sm-inline-block">Later Years</span>
     </a>
   </li>
   {% endif %}
   {% if paginator.next_page %}
   <li class="page-item next">
     <a class="page-link" href="{{ paginator.next_page_path | absolute_url }}">
-      <span class="d-none d-sm-inline-block">Older Posts</span>
-      <i class="fas fa-arrow-right" alt="Older Posts"></i>
+      <span class="d-none d-sm-inline-block">Earlier Years</span>
+      <i class="fas fa-arrow-right" alt="Earlier Years"></i>
     </a>
   </li>
   {% endif %}

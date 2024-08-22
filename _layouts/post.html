@@ -43,6 +43,19 @@ layout: base
         {{ content }}
       </div>
 
+      {% if page.images %}
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+          {% for image in page.images %}
+          <div style="position: relative; width: 100%; padding-bottom: 100%; overflow: hidden;">
+              <a href="{{ image.link }}" target="_blank" style="text-decoration: none; color: inherit;">
+                  <img src="{{ image.src }}" alt="{{ image.caption }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                  <p style="margin-top: 5px; position: absolute; bottom: 0; width: 100%; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px 0; text-align: center; transition: background-color 0.3s ease, transform 0.3s ease;">{{ image.caption }}</p>
+              </a>
+          </div>
+          {% endfor %}
+      </div>
+      {% endif %}
+
       {% if page.tags.size > 0 %}
         <div class="blog-tags">
           <span>Tags:</span>
@@ -68,16 +81,16 @@ layout: base
         {% if page.previous.url %}
         <li class="page-item previous">
           <a class="page-link" href="{{ page.previous.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title | strip_html | xml_escape}}">
-            <i class="fas fa-arrow-left" alt="Previous Post"></i>
-            <span class="d-none d-sm-inline-block">Previous Post</span>
+            <i class="fas fa-arrow-left" alt="Previous Year"></i>
+            <span class="d-none d-sm-inline-block">Previous Year</span>
           </a>
         </li>
         {% endif %}
         {% if page.next.url %}
         <li class="page-item next">
           <a class="page-link" href="{{ page.next.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title | strip_html | xml_escape}}">
-            <span class="d-none d-sm-inline-block">Next Post</span>
-            <i class="fas fa-arrow-right" alt="Next Post"></i>
+            <span class="d-none d-sm-inline-block">Next Year</span>
+            <i class="fas fa-arrow-right" alt="Next Year"></i>
           </a>
         </li>
         {% endif %}
